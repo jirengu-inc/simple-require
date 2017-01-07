@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  
+  <script src="./lib/franklib.js"></script>
+  <script>
+    define('qq', function(){
+      debugger
+      return {name: 'qq'}
+    })
+  </script>
+  <script>
+    define('baidu', function(){
+      debugger
+      return {name: 'baidu'}
+    })
+  </script>
+  <script>
+    define('qq-qun',['qq'], function(qqModule){
+      debugger
+      var qun = {
+        name: 'qq-qun'
+      }
+      qqModule.qun = qun
+      return qun
+    })
+  </script>
+  <script >
+    require(['qq-qun'], function(qqModule, baiduModule, qunModule){
+      console.log(qqModule)
+      console.log(baiduModule)
+      console.log(qunModule)
+
+    })
+  </script>
+</body>
+</html>
